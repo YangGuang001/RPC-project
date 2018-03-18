@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="myDataCenterInfo" class="com.netflix.appinfo.MyDataCenterInfo">
+        <constructor-arg name="name" value="MyOwn"/>
+    </bean>
+
+    <bean id="info" class="com.netflix.appinfo.LeaseInfo"/>
+
+    <bean id="myInstanceInfo" class="feign.demo.client.MyInstanceInfo">
+        <constructor-arg name="dataCenterInfo" ref="myDataCenterInfo"/>
+        <constructor-arg name="leaseInfo" ref="info"/>
+    </bean>
+
+    <bean id="myDataCenterInstanceConfig" class="com.netflix.appinfo.MyDataCenterInstanceConfig">
+        <constructor-arg name="namespace" value="microservice-provider-user"/>
+        <constructor-arg name="dataCenterInfo" ref="myDataCenterInfo"/>
+    </bean>
+    <bean id="instanceInfo" class="com.netflix.appinfo.InstanceInfo">
+        <constructor-arg name="ii" ref="myInstanceInfo"/>
+    </bean>
+
+    <bean id="applicationInfoManager" class="com.netflix.appinfo.ApplicationInfoManager">
+        <constructor-arg name="config" ref="myDataCenterInstanceConfig"/>
+        <constructor-arg name="instanceInfo" ref="instanceInfo"/>
+    </bean>
+
+    <bean id="defaultEurekaClientConfig" class="com.netflix.discovery.DefaultEurekaClientConfig"/>
+
+    <bean id="discoveryClient" class="com.netflix.discovery.DiscoveryClient">
+        <constructor-arg name="applicationInfoManager" ref="applicationInfoManager"/>
+        <constructor-arg name="config" ref="defaultEurekaClientConfig"/>
+    </bean>
+
+
+
+</beans>
