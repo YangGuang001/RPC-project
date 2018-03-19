@@ -94,6 +94,9 @@ public class RpcFeign {
         public Feign build() {
             super.invocationHandlerFactory(new RpcInvocationHandler.Factory());
             super.contract(new RpcDelegatingContract(contract));
+            //不调用父类的build方法，实现MethodHandler接口，与SynchronousMethodHandler类似，只是rpc调用
+            // 直接采用选择器方法， 选择出一个适当的方式去调用，
+            //考虑后期做，需要考虑用户用法
             return super.build();
         }
 

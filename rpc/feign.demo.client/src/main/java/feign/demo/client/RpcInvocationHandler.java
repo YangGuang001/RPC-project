@@ -80,6 +80,7 @@ public class RpcInvocationHandler implements InvocationHandler {
             protected Object run() throws Exception {
                 try {
                     return RpcInvocationHandler.this.dispatch.get(method).invoke(args);
+//                    return null;
                 } catch (Exception e) {
                     throw e;
                 } catch (Throwable t) {
@@ -173,5 +174,7 @@ public class RpcInvocationHandler implements InvocationHandler {
         public InvocationHandler create(Target target, Map<Method, MethodHandler> dispatch) {
             return new RpcInvocationHandler(target, dispatch, null);
         }
+
+
     }
 }

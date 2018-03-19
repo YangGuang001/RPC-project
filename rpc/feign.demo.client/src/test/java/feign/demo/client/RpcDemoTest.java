@@ -38,7 +38,7 @@ public class RpcDemoTest {
 
         ConfigurationManager.loadPropertiesFromResources("microservice-provider-user.properties");
 
-        UserServiceFeignClient serviceFeignClient = Feign
+        UserServiceFeignClient serviceFeignClient = RpcFeign
                 .builder().encoder(new JacksonEncoder()).decoder(new JacksonDecoder())
                 .client(RibbonClient.create())
                 .options(new Request.Options(1000, 3500))
