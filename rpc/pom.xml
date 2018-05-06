@@ -5,6 +5,13 @@
          http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
+    <parent>
+        <groupId>org.springframework.cloud</groupId>
+        <artifactId>spring-cloud-build</artifactId>
+        <version>1.2.1.RELEASE</version>
+        <relativePath />
+    </parent>
+
     <groupId>com.yang.rpc</groupId>
     <artifactId>rpc</artifactId>
     <packaging>pom</packaging>
@@ -188,7 +195,8 @@
         <module>rpc.demo.client</module>
         <module>rpc.demo.api</module>
         <module>rpc.demo.server</module>
-        <module>feign.demo.client</module>
+        <module>rpc.starter.server</module>
+        <module>rpc.starter.client</module>
     </modules>
 
 

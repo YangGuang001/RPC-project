@@ -1,0 +1,3 @@
+# Autoconfiguration
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+com.yang.rpc.starter.server.RpcServerAutoConfiguration
