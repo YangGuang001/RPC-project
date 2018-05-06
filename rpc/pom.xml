@@ -197,6 +197,8 @@
         <module>rpc.demo.server</module>
         <module>rpc.starter.server</module>
         <module>rpc.starter.client</module>
+        <module>rpc.starter.enable.server</module>
+        <module>rpc.starter.enable.client</module>
     </modules>
 
 

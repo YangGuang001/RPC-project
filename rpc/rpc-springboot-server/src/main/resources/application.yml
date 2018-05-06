@@ -1,2 +1,6 @@
 server:
   port: 8010
+rpc:
+  serverAddress: 127.0.0.1:9000
+logging:
+  level: debug
